@@ -19,6 +19,12 @@ def reg_user():
         cursor.execute("""INSERT INTO Person (FirstName, Lastname, EMAIL, USER_ID, Password) VALUES (?,?,?,?,?)""",
                    (fname_info, lname_info, email_info, user_info, password_info))
 
+        cursor.execute("""INSERT INTO UserLogin (USER_ID, Password) VALUES (?,?)""",
+                       (user_info, password_info))
+
+        cursor.execute("""INSERT INTO AdminLogin (USER_ID, Password) VALUES (?,?)""",
+                       (user_info, password_info))
+
         # commit the changes to db
         conn.commit()
 

@@ -41,27 +41,28 @@ def main():
 
     sql_person_table = """CREATE TABLE IF NOT EXISTS Person (
                             PersonID INTEGER PRIMARY KEY,
-                            FirstName TEXT, 
-                            LastName TEXT,
-                            EMAIL TEXT, 
-                            USER_ID TEXT, 
-                            Password TEXT,
+                            FirstName TEXT NOT NULL, 
+                            LastName TEXT NOT NULL,
+                            EMAIL TEXT NOT NULL, 
+                            USER_ID TEXT NOT NULL, 
+                            Password TEXT NOT NULL,
                             Access_Count INTEGER DEFAULT 0
                         );"""
 
     sql_AdminLogin_table = """CREATE TABLE IF NOT EXISTS AdminLogin (
-                            USER_ID TEXT PRIMARY KEY, 
-                            Password TEXT, 
+                            UserId INTEGER PRIMARY KEY,
+                            USER_ID TEXT NOT NULL, 
+                            Password TEXT NOT NULL, 
                             Access_Count INTEGER DEFAULT 0,
                             FOREIGN KEY (USER_ID) REFERENCES Person (USER_ID)
                         );"""
 
     sql_UserLogin_table = """CREATE TABLE IF NOT EXISTS UserLogin (
-                            UserId PRIMARY KEY,
-                            USER TEXT, 
-                            Password TEXT, 
+                            UserId INTEGER PRIMARY KEY,
+                            USER_ID TEXT NOT NULL, 
+                            Password TEXT NOT NULL, 
                             Access_Count INTEGER DEFAULT 0,
-                            FOREIGN KEY (USER) REFERENCES Person (USER_ID)
+                            FOREIGN KEY (USER_ID) REFERENCES Person (USER_ID)
                         );"""
 
     sql_Artist_table = """CREATE TABLE IF NOT EXISTS Artist (
