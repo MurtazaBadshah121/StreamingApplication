@@ -1,14 +1,16 @@
 import tkinter as tk
 from tkinter import *
-from login import *
-from registration import *
+#from login import *
+#from registration import *
+import login
+import registration
 
 
 def onclick():
-    login()
+    login.login()
 
 def onclick2():
-    register()
+    registration.register()
 
 def main_screen():
     window = tk.Tk()

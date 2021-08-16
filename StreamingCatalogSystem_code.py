@@ -1,5 +1,5 @@
 import sqlite3
-import os
+#import os
 from sqlite3 import Error
 
 
@@ -36,24 +36,16 @@ def create_table(conn, create_table_sql):
 
 def main():
     #change the path you want to place the database in your computer
-    #db = r"C:\Users\Che\Desktop\PROG8420-21S-Sec1-ProgrammingforBigData\Project\StreamingCatalogSystem.db"
-    db = r"C:\Users\murta\OneDrive\Documents\GitHub\StreamingApplication\StreamingCatalogSystem.db"
+    db = r"C:\Users\Che\Desktop\ProjectPBD\GIT\StreamingCatalogSystem.db"
+    #db = r"C:\Users\murta\OneDrive\Documents\GitHub\StreamingApplication\StreamingCatalogSystem.db"
 
     sql_person_table = """CREATE TABLE IF NOT EXISTS Person (
                             PersonID INTEGER PRIMARY KEY,
-                            USER_ID TEXT, 
-                            Password TEXT,
                             FirstName TEXT, 
                             LastName TEXT,
-                            Street TEXT,
-                            City TEXT,
-                            State TEXT,
-                            Country TEXT,
-                            PostalCode TEXT,
-                            Birthdate Date,
-                            Phone TEXT,
-                            EMAIL TEXT,
-                            LoginType TEXT, 
+                            EMAIL TEXT, 
+                            USER_ID TEXT, 
+                            Password TEXT,
                             Access_Count INTEGER DEFAULT 0
                         );"""
 
@@ -65,10 +57,11 @@ def main():
                         );"""
 
     sql_UserLogin_table = """CREATE TABLE IF NOT EXISTS UserLogin (
-                            USER_ID TEXT PRIMARY KEY, 
+                            UserId PRIMARY KEY,
+                            USER TEXT, 
                             Password TEXT, 
                             Access_Count INTEGER DEFAULT 0,
-                            FOREIGN KEY (USER_ID) REFERENCES Person (USER_ID)
+                            FOREIGN KEY (USER) REFERENCES Person (USER_ID)
                         );"""
 
     sql_Artist_table = """CREATE TABLE IF NOT EXISTS Artist (
