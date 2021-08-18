@@ -36,8 +36,9 @@ def create_table(conn, create_table_sql):
 
 def main():
     #change the path you want to place the database in your computer
-    db = r"C:\Users\Che\Desktop\ProjectPBD\GIT\StreamingCatalogSystem.db"
+    db = r"C:\Users\Che\Desktop\ProjectPBD\TOGIT0817\vent\StreamingCatalogSystem.db"
     #db = r"C:\Users\murta\OneDrive\Documents\GitHub\StreamingApplication\StreamingCatalogSystem.db"
+    #db = r"E:\Conestoga\PythonForBigData\Project_code_git\StreamingCatalogSystem.db"
 
     sql_person_table = """CREATE TABLE IF NOT EXISTS Person (
                             PersonID INTEGER PRIMARY KEY,
@@ -70,11 +71,6 @@ def main():
                             Artist_Name TEXT
                         );"""
 
-    sql_Media_table = """CREATE TABLE IF NOT EXISTS Media (
-                            MediaTypeId INTEGER PRIMARY KEY,
-                            Media_Name TEXT
-                        );"""
-
     sql_Genre_table = """CREATE TABLE IF NOT EXISTS Genre (
                             GenreId INTEGER PRIMARY KEY,
                             Genre_Type TEXT
@@ -83,37 +79,26 @@ def main():
     sql_Movies_table = """CREATE TABLE IF NOT EXISTS Movies (
                             Movie_ID INTEGER PRIMARY KEY, 
                             Title TEXT, 
-                            ArtistID INTEGER,
+                            Artist_Name TEXT,
                             ReleasedDate INTEGER,
                             Duration TEXT,
-                            GenreId INTEGER,
-                            MediaTypeId INTEGER,
+                            Genre_Type INTEGER,
                             MovieLikes INTEGER DEFAULT 0,
-                            FOREIGN KEY (ArtistID) REFERENCES Artist (ArtistID)
-                            FOREIGN KEY (MediaTypeId) REFERENCES Media (MediaTypeId)
-                            FOREIGN KEY (GenreId) REFERENCES Genre (GenreId)
-                        );"""
-
-    sql_Movie_Artist = """CREATE TABLE IF NOT EXISTS Movie_Artist (
-                            MovieArtist_ID INTEGER PRIMARY KEY, 
-                            Person_ID INTEGER,
-                            Movie_ArtistName,
-                            FOREIGN KEY (Person_ID) REFERENCES Person (Person_ID)
+                            FOREIGN KEY (Artist_Name) REFERENCES Artist (Artist_Name)
+                            FOREIGN KEY (Genre_Type) REFERENCES Genre (Genre_Type)
                         );"""
 
     sql_Series_table = """CREATE TABLE IF NOT EXISTS Series (
                             Series_ID INTEGER PRIMARY KEY, 
                             Title TEXT, 
-                            MovieArtist_ID INTEGER,
+                            Artist_Name TEXT,
                             ReleasedDate INTEGER,
                             NumSeason INTEGER,
                             NumEpisode INTEGER,
-                            GenreId INTEGER,
-                            MediaTypeId INTEGER,
+                            Genre_Type INTEGER,
                             SeriesLikes INTEGER DEFAULT 0,
-                            FOREIGN KEY (MediaTypeId) REFERENCES Media (MediaTypeId)
-                            FOREIGN KEY (GenreId) REFERENCES Genre (GenreId)
-                            FOREIGN KEY (MovieArtist_ID) REFERENCES Movie_Artist (MovieArtist_ID)
+                            FOREIGN KEY (Genre_Type) REFERENCES Genre (Genre_Type)
+                            FOREIGN KEY (Artist_Name) REFERENCES Artist (Artist_Name)
                         );"""
 
     sql_Logs_table = """CREATE TABLE IF NOT EXISTS Logs (
@@ -143,9 +128,6 @@ def main():
         # create artist table
         create_table(conn, sql_Artist_table)
 
-        # create media table
-        create_table(conn, sql_Media_table)
-
         # create genre table
         create_table(conn, sql_Genre_table)
 
@@ -158,8 +140,6 @@ def main():
         # create logs table
         create_table(conn, sql_Logs_table)
 
-        #create movies artist table
-        create_table(conn, sql_Movie_Artist)
     else:
         print("Error! cannot create the database connection.")
 
