@@ -37,7 +37,7 @@ def create_table(conn, create_table_sql):
 def main():
     #change the path you want to place the database in your computer
     #db = r"C:\Users\Che\Desktop\PROG8420-21S-Sec1-ProgrammingforBigData\Project\StreamingCatalogSystem.db"
-    db = r"C:\Users\murta\OneDrive\Documents\GitHub\StreamingApplication\StreamingCatalogSystem.db"
+    db = r"E:\Conestoga\PythonForBigData\Project_code_git\StreamingCatalogSystem.db"
 
     sql_person_table = """CREATE TABLE IF NOT EXISTS Person (
                             USER_ID TEXT PRIMARY KEY, 

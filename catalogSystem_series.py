@@ -87,4 +87,4 @@ def sCatalog():
 
     windowCat.mainloop()
 
-sCatalog()
+# sCatalog()

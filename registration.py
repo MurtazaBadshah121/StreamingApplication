@@ -67,7 +67,7 @@ def register():
 
     #defined the buttons to save or go back
     tk.Button(windowReg, text = "Back", command=windowReg.destroy).grid(row=5,pady=(20,10), padx=(150,10))
-    tk.Button(windowReg, text = "Sign in", command=reg_user).grid(row=6,pady=(20,10), padx=(150,10))
+    tk.Button(windowReg, text = "Register", command=reg_user).grid(row=6,pady=(20,10), padx=(150,10))
 
     #Setup the grid and added padding to the entry fields
     fName.grid(row=0, column=1, pady=(20,10), padx=(20,20))
