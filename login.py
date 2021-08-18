@@ -1,10 +1,20 @@
 import tkinter as tk
 import sqlite3
+import landing_page
+# from main import *
+import landing_page_movies
+import landing_page_series
+import catalogSystem_series
+import catalogSystem_movies
 #import os
+
+def landing_page_screen():
+    # destroy_window()
+    landing_page.landing_page_view()
 
 def login_success():
     windowLog.destroy()
-
+    # landing_page_screen
 def verify_login():
     user_info2 = username1.get()
     password_info2 = password1.get()
@@ -20,11 +30,16 @@ def verify_login():
         print("Login failed.");
         verify_login()
     else:
+        # 'ON SUCCESSFUL LOGIN'
         access_count += 1
         print("Welcome!")
         stmt2 = f"SELECT USER_ID, COUNT(ACCESS_COUNT) FROM Person WHERE USER_ID ='{user_info2}' AND Access_Count = {access_count};"
         cursor.execute(stmt2)
-        tk.Button(windowLog, text="OK", command=login_success).grid(row=7, pady=(20, 10), padx=(150, 10))
+        windowLog.destroy()
+        # destroy_window()
+        landing_page_screen()
+        # landing_page.landing_page_view()
+        # tk.Button(windowLog, text="OK", command=landing_page_screen).grid(row=7, pady=(20, 10), padx=(150, 10))
         #print("USER_ID: {}".format(user_info2))
         #print("Access Count: {}".format(access_count))
 
@@ -59,4 +74,4 @@ def login():
     #Run the window
     windowLog.mainloop()
 
-#login()
+# login()

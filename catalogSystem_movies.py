@@ -88,4 +88,4 @@ def mCatalog():
 
     windowCat.mainloop()
 
-mCatalog()
+# mCatalog()
