@@ -64,7 +64,7 @@ def register():
     email = tk.Entry(windowReg)
     username = tk.Entry(windowReg)
     password = tk.Entry(windowReg, show="*")
-
+    #
     #defined the buttons to save or go back
     tk.Button(windowReg, text = "Back", command=windowReg.destroy).grid(row=5,pady=(20,10), padx=(150,10))
     tk.Button(windowReg, text = "Register", command=reg_user).grid(row=6,pady=(20,10), padx=(150,10))

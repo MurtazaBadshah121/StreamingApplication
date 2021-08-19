@@ -8,7 +8,7 @@ def landing_screen_movies():
 
     ##### tkinter window ######
     my_w = tk.Tk()
-    my_w.geometry("870x450")
+    my_w.geometry("1000x450")
 
     headTup = ('MovieID', 'Title', 'ArtistName', 'ReleaseDate', 'Duration', 'Genre', 'MovieLikes')
     r_set=my_conn.execute('''SELECT * from Movies''');
@@ -29,6 +29,7 @@ def landing_screen_movies():
             e.insert(END, movie[j])
         i=i+1
     print(type(r_set))
+    my_conn.close()
     my_w.mainloop()
 
 # landing_screen_movies()

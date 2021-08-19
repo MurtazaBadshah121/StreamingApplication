@@ -28,7 +28,8 @@ def landing_screen_series():
             e.grid(row=i, column=j)
             e.insert(END, series[j])
         i=i+1
-    print(type(r_set))
+    # print(type(r_set))
+    my_conn.close()
     my_w.mainloop()
 
 # landing_screen_series()

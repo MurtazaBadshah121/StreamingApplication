@@ -24,8 +24,6 @@ def verify_login():
     statement = f"SELECT USER_ID from Person WHERE USER_ID ='{user_info2}' AND Password = '{password_info2}';"
     cursor.execute(statement)
     access_count = 0
-    # username1.delete(0, END)
-    # password1.delete(0, END)
     if not cursor.fetchone():  # An empty result evaluates to False.
         print("Login failed.");
         verify_login()
@@ -35,15 +33,14 @@ def verify_login():
         print("Welcome!")
         stmt2 = f"SELECT USER_ID, COUNT(ACCESS_COUNT) FROM Person WHERE USER_ID ='{user_info2}' AND Access_Count = {access_count};"
         cursor.execute(stmt2)
-        windowLog.destroy()
-        # destroy_window()
+        cursor.close()
+        login_success()
         landing_page_screen()
         # landing_page.landing_page_view()
         # tk.Button(windowLog, text="OK", command=landing_page_screen).grid(row=7, pady=(20, 10), padx=(150, 10))
         #print("USER_ID: {}".format(user_info2))
         #print("Access Count: {}".format(access_count))
 
-    cursor.close()
 
 
 def login():
